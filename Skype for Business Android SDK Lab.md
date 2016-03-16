@@ -21,23 +21,27 @@ Let's set up the IDE for ease of use and consistency with the lab. Most of the s
 
 1. Set up your project view
 
- On the left-hand side of the IDE, click the vertical-aligned "Project" tab to open the project explorer window. At the top of that section, there is a dropdown on the left side. Make sure that "Android" is selected - this will allow us to work with our components more efficiently as we quickly complete our app.
+    On the left-hand side of the IDE, click the vertical-aligned "Project" tab to open the project explorer window. At the top of that section, there is a dropdown on the left side. Make sure that "Android" is selected - this will allow us to work with our components more efficiently as we quickly complete our app.
 
-![image](screenshots/ide_project_view.png)
+	![image](screenshots/ide_project_view.png)
 
 2. Optional: If you'd like to change your IDE color settings for readability as has been done in the demo, do the following:
 
- Navigate to File->Settings... (Ctrl+Alt+S), select the 'Appearance & Behavior' section, and expand its contents. Select 'Appearance'. Change the theme to Darcula as seen in the screenshot (dropdown) and press OK.
- ![image](screenshots/ide_settings.png)
+    Navigate to File->Settings... (Ctrl+Alt+S), select the 'Appearance & Behavior' section, and expand its contents. Select 'Appearance'. Change the theme to Darcula as seen in the screenshot (dropdown) and press OK.
  
-Once completed, let's Run our application to make sure everything is working before we begin. Press the run button 
-![image](screenshots/ide_run.png) 
-or on a PC, press Shift+F10.  Once the application is built and installed on the device,
+	![image](screenshots/ide_settings.png)
+ 
+	Once completed, let's Run our application to make sure everything is working before we begin. Press the run button 
+    
+	![image](screenshots/ide_run.png) 
+    
+	or on a PC, press Shift+F10.  Once the application is built and installed on the device,
 
-you should arrive at our main activity page that looks like the following:
-![image](screenshots/app_activity_main.png)
+	you should arrive at our main activity page that looks like the following:
+	![image](screenshots/app_activity_main.png)
 
 Clicking the "Chat with Support" link will navigate us to our conversation join screen, but we do not have anything else wired up at the moment.  This starter solution has all UI components already prepared for you, in addition to some more specific adapter and listener classes which handle state changes and other more specific components which we won't be covering in this lab.  The three main files we will be working in are `MainActivity`, `JoinActivity`, and `ConversationActivity`. Their respective layouts are `activity_main.xml`, `activity_join.xml`, and `activity_conversations.xml`.  If you'd like to get an idea of what those look like before we begin, you can use the designer view in Android Studio. Open one of these files and click the 'Design' tab (by default in the lower-left corner of the editor for .xml layout files).
+
 ![image](screenshots/ide_layout_view.png)
 
 ##Join a meeting 
