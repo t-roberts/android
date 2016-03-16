@@ -633,6 +633,7 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
  Note the last two lines of code - We're creating an ActionBar and enabling the default menu back button with `setDisplayHomeAsUpEdnabled(true)`.
+ 
  ![image](screenshots/app_navigation_back_button.png)
  
  Finally, let's implement the `onBackPressed()` function. This is called from both the chat and video conversation components when pressing the navigation back button or the back button on the device. Add the following code:
