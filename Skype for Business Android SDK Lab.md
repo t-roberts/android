@@ -344,11 +344,12 @@ public boolean onOptionsItemSelected(MenuItem item) {
  
  
 7. In order to test out that everything is working, let's run our application again. Make sure that the anonymous user is no longer shown in the meeting on the host computer. If they are, right click their user and Remove them from the meeting. Then, if the app if it is still running on your device, kill it and run the project again from Android Studio. We'll now have a new version of the app with our changes installed on your device. If everything is working correctly, you will see the user once again join the meeting. Right click them and Un-mute them from the host meeting (on your PC). Now, press the mute button (![image](screenshots/fabrikam_skypeControl_endCall.png)) on the device screen. The button should update it's icon to be the active version (![image](screenshots/fabrikam5k_team_callIcon.png)), and you should be able to hear input from the device in the host meeting. 
- ![image](screenshots/app_meeting_conversation_unmuted.png)
+
+	![image](screenshots/app_meeting_conversation_unmuted.png)
  
- >Note:
- >If you mute the microphone from the device, it will re-mute both the device and the anonymous user in the conversation. If you want to speak again, the host will have to un-mute you again before you press the mute button.
- >![image](screenshots/meeting_mute_app_user.png)
+    >Note:
+    >If you mute the microphone from the device, it will re-mute both the device and the anonymous user in the conversation. If you want to speak again, the host will have to un-mute you again before you press the mute button.
+    >![image](screenshots/meeting_mute_app_user.png)
 
 ##Switching Speakers
 1. To switch from the default speakerphone to the device headset speaker, we will need to make use of the `DevicesManager` we initialized earlier. Add the following code to the `onCreate()` method of the `ConversationActivity` class:
