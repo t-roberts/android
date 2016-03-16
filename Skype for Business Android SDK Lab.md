@@ -63,75 +63,77 @@ In this section we'll be integrating Skype SDK code necessary to join a Skype me
  
 2. The activity_join.xml layout has the components that we will be interacting with in our app already set up for you as mentioned earlier. If you open the designer view of this file, you'll see that we have a text-entry field for entering our display name, as well as a join link for initiating our meeting.  If you switch to the 'Text' view of this file and look for the following code block, you'll see that we have an onClick action defined, with a value of "launchChat". Remember this as we continue on in this section.
 
-```xml
-   <TextView
-   android:layout_width="wrap_content"
-   android:layout_height="wrap_content"
-   android:text="Join"
-   android:id="@+id/joinConversation"
-   android:layout_below="@+id/meetingUriName"
-   android:layout_centerHorizontal="true"
-   android:layout_marginTop="27dp"
-   android:textColor="#00AFF0"
-   android:textSize="20sp"
-   android:onClick="launchChat"
-   android:clickable="true"/>
-```
+    ```xml
+       <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Join"
+       android:id="@+id/joinConversation"
+       android:layout_below="@+id/meetingUriName"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="27dp"
+       android:textColor="#00AFF0"
+       android:textSize="20sp"
+       android:onClick="launchChat"
+       android:clickable="true"/>
+    ```
 
 3. First, we need to initialize some components that will be necessary for working with the SDK to join a meeting. Open `JoinActivity`, found under app>java>contoso.com.skypeandroiddemo_starter, and paste in the following immediately after the class declaration
  
- ```java
- public class JoinActivity extends AppCompatActivity {
+    ```java
+     public class JoinActivity extends AppCompatActivity {
 
-    Application application = null;
-    ConversationsManager conversationsManager = null;
-    ConfigurationManager configurationManager = null;
-    DevicesManager devicesManager = null;
-    ConversationPropertyChangeListener conversationPropertyChangeListener = null;
-    Conversation anonymousConversation = null;
+        Application application = null;
+        ConversationsManager conversationsManager = null;
+        ConfigurationManager configurationManager = null;
+        DevicesManager devicesManager = null;
+        ConversationPropertyChangeListener conversationPropertyChangeListener = null;
+        Conversation anonymousConversation = null;
 
-    TextView conversationStateTextView = null;
+        TextView conversationStateTextView = null;
 
-    boolean meetingJoined = false; 
- ...
- }
- ```
- In the code above we have declared and initialized a number of objects necessary for interacting with our Skype meeting. Starting with our `Application` object, this is our top level property needed for the SDK, and is initialized by calling the `.getInstance()` function (we'll implement this in a moment). From there, we then have access to the `ConversationManager` and `ConfigurationManager`. The `DevicesManager` is what will allow us to interact with our speakerphone, microphone, front and rear facing camera on our device. The `Conversation` is going to play a critical role in keeping track of all conversations that you are joined to, and the subsequent activity that occurs within them. For this tutorial, we will only be joining one conversation. 
- 
- Finally, the `ConversationPropertyChangeListener` is what will monitor changes in Conversation status as we establish our connection to the meeting.
+        boolean meetingJoined = false; 
+    ...
+    }
+    ```
+    
+    In the code above we have declared and initialized a number of objects necessary for interacting with our Skype meeting. Starting with our `Application` object, this is our top level property needed for the SDK, and is initialized by calling the `.getInstance()` function (we'll implement this in a moment). From there, we then have access to the `ConversationManager` and `ConfigurationManager`. The `DevicesManager` is what will allow us to interact with our speakerphone, microphone, front and rear facing camera on our device. The `Conversation` is going to play a critical role in keeping track of all conversations that you are joined to, and the subsequent activity that occurs within them. For this tutorial, we will only be joining one conversation. 
+
+    Finally, the `ConversationPropertyChangeListener` is what will monitor changes in Conversation status as we establish our connection to the meeting.
  
 4. Let's assign the values of these components in our `onCreate()` method - paste the following code
-```java
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_join);
+    ```java
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_join);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            setSupportActionBar(myToolbar);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(true);
 
-        this.conversationStateTextView = (TextView)findViewById(R.id.conversationState);
-        this.application = Application.getInstance(this.getApplication().getApplicationContext());
-        this.conversationsManager = application.getConversationsManager();
-        this.configurationManager = application.getConfigurationManager();
-        this.devicesManager = application.getDevicesManager();
-    }
-```
- By making use of additional SDK components (such as `application.getConversationsManager()`), we've initialized all of our conversation components necessary for joining meeting.
+            this.conversationStateTextView = (TextView)findViewById(R.id.conversationState);
+            this.application = Application.getInstance(this.getApplication().getApplicationContext());
+            this.conversationsManager = application.getConversationsManager();
+            this.configurationManager = application.getConfigurationManager();
+            this.devicesManager = application.getDevicesManager();
+        }
+	```
+
+    By making use of additional SDK components (such as `application.getConversationsManager()`), we've initialized all of our conversation components necessary for joining meeting.
  
 5. Let's quickly add our `onDestroy()` method as well - this is where some basic cleanup will occur when the `JoinActiviy` is completed. Paste the following into `onDestroy()`
- ```java
-    @Override
-    protected void onDestroy() {
-        this.conversationsManager = null;
-        this.configurationManager = null;
-        this.application = null;
-        super.onDestroy();
-    } 
- ```
+     ```java
+        @Override
+        protected void onDestroy() {
+            this.conversationsManager = null;
+            this.configurationManager = null;
+            this.application = null;
+            super.onDestroy();
+        } 
+     ```
  
 6. Now let's implement the `launchChat` function mentioned earlier - this is where we will attempt to join the meeting with our display name and meeting URI when the join button is pressed. Paste the following code into the launchChat function
  ```java
