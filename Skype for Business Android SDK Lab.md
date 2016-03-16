@@ -511,7 +511,7 @@ We'll be working in `ConversationActivity` again as we wire up video capability 
  
 You should have all necessary components wired to test the conversation video. Run the app again and after connecting to the conversation, press the video button to escalate to video. If your PC has a webcam, enable it in the conversation and you will be able to see both devices displaying. If additional members join the conversation with enabled webcams and begin speaking, you will see the app video switch back and forth between speakers (whoever is 'dominant' in the conversation at the moment - usually one person while others are muted or not talking).
 
-	![imgage](screenshots/device-2016-03-01-122521.png)
+![imgage](screenshots/device-2016-03-01-122521.png)
 
 
  
