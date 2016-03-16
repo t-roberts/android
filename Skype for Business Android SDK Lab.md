@@ -249,42 +249,44 @@ In this section we will wire up our audio button (![image](screenshots/fabrikam5
 
 2. First we need to set up some of the necessary properties we'll be working with. Inside of the `ConversationActivity` class declaration, add the following code:
 
-```java
-public class ConversationActivity extends AppCompatActivity implements ConversationsListFragment.FragmentInteractionListener, ChatFragment.ChatFragmentInteractionListener {
+    ```java
+    public class ConversationActivity extends AppCompatActivity implements ConversationsListFragment.FragmentInteractionListener, ChatFragment.ChatFragmentInteractionListener {
 
-// ConversationsList fragment for displaying the conversations list.
-private ConversationsListFragment conversationsListFragment = null;
+    // ConversationsList fragment for displaying the conversations list.
+    private ConversationsListFragment conversationsListFragment = null;
 
-// Chat fragment for IM.
-private ChatFragment chatFragment = null;
+    // Chat fragment for IM.
+    private ChatFragment chatFragment = null;
 
-// Video Fragment.
-private VideoFragment videoFragment = null;
-private Conversation currentConversation = null;
-private DevicesManager devicesManager = null;
+    // Video Fragment.
+    private VideoFragment videoFragment = null;
+    private Conversation currentConversation = null;
+    private DevicesManager devicesManager = null;
 
-DevicesManager.Endpoint endpoint = null;
-Menu localMenu = null;
-MenuItem muteButton = null;
-MenuItem speakerButton = null;
-MenuItem videoButton = null;
-Toolbar conversationToolBar = null;
+    DevicesManager.Endpoint endpoint = null;
+    Menu localMenu = null;
+    MenuItem muteButton = null;
+    MenuItem speakerButton = null;
+    MenuItem videoButton = null;
+    Toolbar conversationToolBar = null;
 
-...
-}
-```
-This initializes the two fragments we'll be working with to display the chat messages/history and video feeds, as well as the current conversation, devices manager, and the buttons that we'll want to set toggle actions on.
+    ...
+    }
+    ```
+    
+    This initializes the two fragments we'll be working with to display the chat messages/history and video feeds, as well as the current conversation, devices manager, and the buttons that we'll want to set toggle actions on.
 
 3. Next, in the `onCreate()` method, add the following code:
- ```java
+    ```java
     // For anonymous meeting join, there will only be a single conversation in the list.
     this.currentConversation = (com.microsoft.office.sfb.appsdk.Application.getInstance(
             this.getApplicationContext()).getConversationsManager().getConversations()).get(0);
- 
+
     this.conversationToolBar = (Toolbar) findViewById(R.id.conversation_toolbar);
     setSupportActionBar(this.conversationToolBar);
- ```
- This assigns our current conversation, and populates our ActionBar with the contents of our menu we have set up in app>res>menu>menu_conversation.xml. Check out the contents of that file if you'd like to see what our menu items look like and how they are set up. The conversation object is important, as it's how we manage all interactions with the skype meeting, including the various inputs and outputs (like our microphone, speakers, and camera feed).
+    ```
+    
+    This assigns our current conversation, and populates our ActionBar with the contents of our menu we have set up in app>res>menu>menu_conversation.xml. Check out the contents of that file if you'd like to see what our menu items look like and how they are set up. The conversation object is important, as it's how we manage all interactions with the skype meeting, including the various inputs and outputs (like our microphone, speakers, and camera feed).
  
 4. Next, add the following code to the overridden `onCreateOptionsMenu()`
  ```java
@@ -299,19 +301,19 @@ This initializes the two fragments we'll be working with to display the chat mes
         return true;
     }
  ```
- We're adding more than is necessary for the mute/unmute functionality, but we'll need these objects soon. For now, we're setting up the menu and individual items that we will be interacting with - the mute/unmute, speaker, video and end call buttons. More on the rest of those to come, for now let's handle what happens when we press our mute/unmute button.
+    We're adding more than is necessary for the mute/unmute functionality, but we'll need these objects soon. For now, we're setting up the menu and individual items that we will be interacting with - the mute/unmute, speaker, video and end call buttons. More on the rest of those to come, for now let's handle what happens when we press our mute/unmute button.
  
 5. Complete the `updateMuteButton()` function to handle toggling our menu button icon when pressed:
- ```java
-public void updateMuteButton(boolean isMuted) {
-        if(isMuted) {
-            muteButton.setIcon(R.drawable.fabrikam_skypecontrol_endcall);
-        } else {
-            muteButton.setIcon(R.drawable.fabrikam5k_team_call_icon);
+     ```java
+    public void updateMuteButton(boolean isMuted) {
+            if(isMuted) {
+                muteButton.setIcon(R.drawable.fabrikam_skypecontrol_endcall);
+            } else {
+                muteButton.setIcon(R.drawable.fabrikam5k_team_call_icon);
+            }
         }
-    }
- ```
- This will display to the user that they have un-muted or muted themselves on the call.
+     ```
+	This will display to the user that they have un-muted or muted themselves on the call.
  
 6. Add the handler event for when our mute button is pressed by pasting this code into `onOptionsItemSelected()`
  ```java
