@@ -227,12 +227,16 @@ In this section we'll be integrating Skype SDK code necessary to join a Skype me
     }
 ```
  This function does two potential things each time the conversation state is altered (via operations in the SDK meeting join code): the value of our `conversationStateTextView` is updated (pictured below), and the value of `meetingJoined` is set appropriately. If we've joined the meeting successfully, we'll navigate to our Conversation view.
+ 
  ![image](screenshots/app_joining_meeting.png)
+ 
  At this point, we've added all necessary code to join our meeting.  If you run the application, click "Chat with Support", provide a display name in the text field and click "Join", you will navigate to the conversation activity. To test the app, start the meeting that you created earlier by clicking the link you generated and emailed yourself. Make sure you are also joined to the meeting as the *organizer* .
  
  When you click join on the device you should see the anonymous user join the meeting with the display name you entered in the app. Since the meeting audio is started automatically, you will also be able to hear anyone else in the meeting from the device (they can't hear your device input however, as you start the meeting muted, but that will be fixed in a later section).  Your device screen should look like the following after joining:
+ 
  ![image](screenshots/app_meeting_conversation_barebones.png)
- >Note:
+ 
+ >>Note:
  >When using the default meeting settings in Skype for Business, any anonymous users need to be admitted into the meeting before they can fully join. For ease of testing, you might want to disable this option so that the anonymous user is admitted automatically to the meeting, and then leave the meeting running as we continue to develop the app.
 
 ##Adding Audio
