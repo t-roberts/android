@@ -1,5 +1,5 @@
 #Skype for Business Android SDK
-[toc]  
+
 
 This lab will provide you an opportunity to jump into Android development while integrating Skype for Business components. Our objective is to create a sample app that allows an anonymous user to join an existing Skype meeting with chat, audio, and video capability.
 
@@ -9,6 +9,7 @@ This lab will provide you an opportunity to jump into Android development while 
 ##Setting Up
 Open Android Studio, and select "Open an existing Android Studio project", shown here:
 ![imgage](screenshots/open_existing.png)
+
 Once completed, open our starter project, SkypeAndroidDemo_Starter
 
 If this option is not available (i.e. if your IDE opens to a recently saved project in Android Studio), you can also achieve this by navigating to File->Open... and selecting our starter solution from the resulting browser that opens.
@@ -21,7 +22,8 @@ Let's set up the IDE for ease of use and consistency with the lab. Most of the s
 1. Set up your project view
 
  On the left-hand side of the IDE, click the vertical-aligned "Project" tab to open the project explorer window. At the top of that section, there is a dropdown on the left side. Make sure that "Android" is selected - this will allow us to work with our components more efficiently as we quickly complete our app.
- ![image](screenshots/ide_project_view.png)
+
+![image](screenshots/ide_project_view.png)
 
 2. Optional: If you'd like to change your IDE color settings for readability as has been done in the demo, do the following:
 
