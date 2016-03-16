@@ -389,7 +389,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
 
 4. Now that we've got the event-handling set up, run a clean instance of the app and test out our new code. You should be able to toggle between the speakerphone and headset speaker on your device to hear audio from the meeting.
 
-![image](screenshots/app_meeting_conversation_headset_speaker.png)
+	![image](screenshots/app_meeting_conversation_headset_speaker.png)
 
 ##Displaying Conversation History and Chat Messages
 In this section we will update the `ConversationActivity` class once again, implementing a Fragment which will hold our chat components. This will allow you to view any sent messages, as well as activity such as users entering and leaving the conversation.
@@ -510,7 +510,8 @@ We'll be working in `ConversationActivity` again as we wire up video capability 
  Let's look at `VideoFragment` to see some of the details on how our video is working. Look in the `onCreateView()` method - we start by inflating our `video_fragment_layout.xml`, initializing and setting a property listener on our video service (SDK component). Then we capture the anonymous user video feed, initialize the pause and camera switch buttons and set their respective `onClick()` response functions, and finally capture the conversation video (dominant speaker). A little farther down, you can see how the `onPauseClick()` simply pauses/un-pauses the anonymous user's video feed to the conversation, and the `onCameraSwitch()` flips the cameras between front and rear-facing on the app device.
  
 You should have all necessary components wired to test the conversation video. Run the app again and after connecting to the conversation, press the video button to escalate to video. If your PC has a webcam, enable it in the conversation and you will be able to see both devices displaying. If additional members join the conversation with enabled webcams and begin speaking, you will see the app video switch back and forth between speakers (whoever is 'dominant' in the conversation at the moment - usually one person while others are muted or not talking).
- ![imgage](screenshots/device-2016-03-01-122521.png)
+
+	![imgage](screenshots/device-2016-03-01-122521.png)
 
 
  
